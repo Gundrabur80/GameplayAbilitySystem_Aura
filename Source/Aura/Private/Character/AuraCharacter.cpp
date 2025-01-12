@@ -26,7 +26,7 @@ AAuraCharacter::AAuraCharacter()
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(GetRootComponent());
 	CameraBoom->SetRelativeRotation(FRotator(-45.f, 0.f, 0.f));
-	CameraBoom->TargetArmLength = 750.f;
+	CameraBoom->TargetArmLength = 800.f;
 	CameraBoom->bInheritPitch = false;
 	CameraBoom->bInheritRoll = false;
 	CameraBoom->bInheritYaw = false;
