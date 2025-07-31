@@ -27,6 +27,12 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void StoreAdditionalTargets(TArray<AActor*>& OutAdditionalTargets);
+
+	UFUNCTION(BLueprintImplementableEvent)
+	void PrimaryTargetDied(AActor* DeadActor);
+
+	UFUNCTION(BLueprintImplementableEvent)
+	void AdditionalTargetDied(AActor* DeadActor);
 	
 protected:
 
