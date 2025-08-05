@@ -20,7 +20,7 @@ void UAuraPassiveAbility::ActivateAbility(const FGameplayAbilitySpecHandle Handl
 
 void UAuraPassiveAbility::ReceiveDeactivate(const FGameplayTag& AbilityTag)
 {
-	if (AbilityTags.HasTag(AbilityTag))
+	if (GetAssetTags().HasTag(AbilityTag))
 	{
 		EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, true);
 	}
