@@ -178,6 +178,23 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 	);
 
 	/*
+	 * Buffs
+	 */
+
+	GameplayTags.Buff_HaloOfProtection = UGameplayTagsManager::Get().AddNativeGameplayTag(
+			FName("Buff.HaloOfProtection"),
+			FString("Buff for Halo of Protection")
+		);
+	GameplayTags.Buff_LifeSiphon = UGameplayTagsManager::Get().AddNativeGameplayTag(
+			FName("Buff.LifeSiphon"),
+			FString("Buff for Life Siphon")
+		);
+	GameplayTags.Buff_HaloOfProtection = UGameplayTagsManager::Get().AddNativeGameplayTag(
+			FName("Buff.HaloOfProtection"),
+			FString("Buff for Mana Siphon")
+		);
+	
+	/*
 	 * Debuffs
 	 */
 

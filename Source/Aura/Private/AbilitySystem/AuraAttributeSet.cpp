@@ -223,7 +223,7 @@ void UAuraAttributeSet::Debuff(const FEffectProperties& Props)
 
 	const FGameplayTag DamageType = UAuraAbilitySystemLibrary::GetDamageType(Props.EffectContextHandle);
 	const float DebuffDamage = UAuraAbilitySystemLibrary::GetDebuffDamage(Props.EffectContextHandle);
-	const float DebuffDuraction = UAuraAbilitySystemLibrary::GetDebuffDuration(Props.EffectContextHandle);
+	const float DebuffDuration = UAuraAbilitySystemLibrary::GetDebuffDuration(Props.EffectContextHandle);
 	const float DebuffFrequency = UAuraAbilitySystemLibrary::GetDebuffFrequency(Props.EffectContextHandle);
 
 	FString DebuffName = FString::Printf(TEXT("DynamicDebuff_%s"), *DamageType.ToString());
@@ -231,7 +231,7 @@ void UAuraAttributeSet::Debuff(const FEffectProperties& Props)
 
 	Effect->DurationPolicy = EGameplayEffectDurationType::HasDuration;
 	Effect->Period = DebuffFrequency;
-	Effect->DurationMagnitude = FScalableFloat(DebuffDuraction);
+	Effect->DurationMagnitude = FScalableFloat(DebuffDuration);
 	
 	const FGameplayTag DebuffTag = GameplayTags.DamageTypesToDebuffs[DamageType];
 	

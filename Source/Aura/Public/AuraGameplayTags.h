@@ -55,6 +55,10 @@ public:
 	FGameplayTag Attributes_Resistance_Arcane;
 	FGameplayTag Attributes_Resistance_Physical;
 
+	FGameplayTag Buff_HaloOfProtection;
+	FGameplayTag Buff_LifeSiphon;
+	FGameplayTag Buff_ManaSiphon;
+
 	FGameplayTag Debuff_Burn;
 	FGameplayTag Debuff_Stun;
 	FGameplayTag Debuff_Arcane;
