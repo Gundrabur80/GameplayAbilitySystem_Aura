@@ -228,7 +228,44 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
 
 	// Double Damage pluas a bonus if critical hit
 	Damage = bCriticalHit ? Damage * 2.f + SourceCriticalHitDamage : Damage;
+
+	const UCharacterClassInfo* SourceCharacterClassInfo = UAuraAbilitySystemLibrary::GetCharacterClassInfo(SourceAvatar);
+	const UCharacterClassInfo* TargetCharacterClassInfo = UAuraAbilitySystemLibrary::GetCharacterClassInfo(TargetAvatar);
+		
+	Damage = ApplyDamageReductionByHaloOfProtection(Damage, TargetASC, TargetCharacterClassInfo);
 	
 	const FGameplayModifierEvaluatedData EvaluatedData(UAuraAttributeSet::GetIncomingDamageAttribute(), EGameplayModOp::Additive, Damage);
 	OutExecutionOutput.AddOutputModifier(EvaluatedData);
+}
+
+float UExecCalc_Damage::ApplyDamageReductionByHaloOfProtection(float Damage, const UAbilitySystemComponent* TargetASC, const UCharacterClassInfo* TargetCharacterClassInfo) const
+{
+	const FAuraGameplayTags& AbilityTags = FAuraGameplayTags::Get();
+	if (!TargetASC || !TargetASC->HasMatchingGameplayTag(AbilityTags.Abilities_Passive_HaloOfProtection) || !TargetCharacterClassInfo || !TargetCharacterClassInfo->DamageCalculationCoefficients)
+	{
+		return Damage;
+	}
+
+	int32 AbilityLevel = 1;
+
+	TArray<FGameplayAbilitySpecHandle> AbilityHandles;
+	FGameplayTagContainer Tags;
+	Tags.AddTag(AbilityTags.Abilities_Passive_HaloOfProtection);
+	TargetASC->FindAllAbilitiesWithTags(AbilityHandles, Tags);
+	for (const FGameplayAbilitySpecHandle& Handle : AbilityHandles)
+	{
+		FGameplayAbilitySpec* Spec = TargetASC->FindAbilitySpecFromHandle(Handle);
+		AbilityLevel = Spec->Level;
+		break;
+	}
+	
+	const FRealCurve* DamageReductionCurve = TargetCharacterClassInfo->DamageCalculationCoefficients->FindCurve(FName("HaloOfProtection"), FString());
+
+	if (DamageReductionCurve)
+	{
+		const float DamageReductionPercent = DamageReductionCurve->Eval(AbilityLevel);
+		Damage *= 1.f - DamageReductionPercent / 100.f;
+	}
+
+	return Damage;
 }
