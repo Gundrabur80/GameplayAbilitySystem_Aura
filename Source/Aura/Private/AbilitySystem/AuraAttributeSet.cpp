@@ -244,7 +244,6 @@ void UAuraAttributeSet::Debuff(const FEffectProperties& Props)
 	const float DebuffFrequency = UAuraAbilitySystemLibrary::GetDebuffFrequency(Props.EffectContextHandle);
 
 	FString DebuffName = FString::Printf(TEXT("DynamicDebuff_%s"), *DamageType.ToString());
-	//UGameplayEffect* Effect = NewObject<UGameplayEffect>(GetTransientPackage(), FName(DebuffName));
 
 	FString Path = FString::Printf(	TEXT("/Game/Blueprints/AbilitySystem/Aura/Effects/GE_Debuff.GE_Debuff_C"));
 	UClass* EffectClass = LoadObject<UClass>(nullptr, *Path);
@@ -281,9 +280,6 @@ void UAuraAttributeSet::Debuff(const FEffectProperties& Props)
 	}
 	Component.SetAndApplyTargetTagChanges(TagContainer);
 
-	//Effect->StackingType = EGameplayEffectStackingType::AggregateBySource;
-	//Effect->StackLimitCount = 1;
-
 	const int32 Index = Effect->Modifiers.Num();
 	Effect->Modifiers.Add(FGameplayModifierInfo());
 	FGameplayModifierInfo& ModifierInfo = Effect->Modifiers[Index];
@@ -308,7 +304,6 @@ void UAuraAttributeSet::Siphon(const FString& Attribute, float Damage, const FEf
 	if (Props.SourceCharacter->Implements<UCombatInterface>() && ICombatInterface::Execute_IsDead(Props.SourceCharacter)) return;
 
     const FString SiphonName = FString::Printf(TEXT("%sSiphon"), *Attribute);
-    //UGameplayEffect* Effect = NewObject<UGameplayEffect>(GetTransientPackage(), FName(SiphonName));
 	
 	FString Path = FString::Printf(	TEXT("/Game/Blueprints/AbilitySystem/Aura/Effects/GE_Siphon.GE_Siphon_C"));
 	UClass* EffectClass = LoadObject<UClass>(nullptr, *Path);
@@ -339,9 +334,6 @@ void UAuraAttributeSet::Siphon(const FString& Attribute, float Damage, const FEf
     }
 
     Effect->DurationPolicy = EGameplayEffectDurationType::Instant;
-    //Effect->StackingType = EGameplayEffectStackingType::AggregateBySource;
-	//Effect->SetStackingType(EGameplayEffectStackingType::AggregateBySource);
-    //Effect->StackLimitCount = 1;
 
     const int32 Index = Effect->Modifiers.Num();
     Effect->Modifiers.Add(FGameplayModifierInfo());
