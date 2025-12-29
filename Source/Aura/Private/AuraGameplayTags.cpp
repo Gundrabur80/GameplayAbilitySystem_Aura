@@ -129,6 +129,11 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 		FName("InputTag.Passive.2"),
 		FString("Input Tag for Passive Ability 2")
 		);
+	
+	GameplayTags.InputTag_Escape = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("InputTag.Escape"),
+		FString("Input Tag for Escape Key")
+		);
 
 	GameplayTags.Damage = UGameplayTagsManager::Get().AddNativeGameplayTag(
 		FName("Damage"),
