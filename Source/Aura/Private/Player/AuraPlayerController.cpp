@@ -68,6 +68,7 @@ void AAuraPlayerController::ShowDamageNumber_Implementation(float DamageAmount, 
 void AAuraPlayerController::AutoRun()
 {
 	if (!bAutoRunning) return;
+	if (IsValid(MagicCircle)) return;
 	if (APawn* ControlledPawn = GetPawn())
 	{
 		const FVector LocationOnSlpine = Spline->FindLocationClosestToWorldLocation(ControlledPawn->GetActorLocation(), ESplineCoordinateSpace::World);
@@ -160,7 +161,7 @@ void AAuraPlayerController::AbilityInputTagReleased(FGameplayTag InputTag)
 				}
 				bAutoRunning = true;
 			}
-			if (GetASC() && !GetASC()->HasMatchingGameplayTag(FAuraGameplayTags::Get().Player_Block_InputPressed))
+			if (GetASC() && !GetASC()->HasMatchingGameplayTag(FAuraGameplayTags::Get().Player_Block_InputPressed), !IsValid(MagicCircle))
 			{
 				UNiagaraFunctionLibrary::SpawnSystemAtLocation(this, ClickNiagaraSystem, CachedDestination);
 			}

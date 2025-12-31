@@ -73,8 +73,8 @@ TArray<USceneComponent*> APointCollection::GetGroundPoints(const FVector& Ground
 			Pt->SetWorldLocation(Pt_0->GetComponentLocation() + ToPoint);
 		}
 		
-		const FVector RaisedLocation = FVector(Pt->GetComponentLocation().X, Pt->GetComponentLocation().Y, Pt->GetComponentLocation().Z + 500.f);
-		const FVector LoweredLocation = FVector(Pt->GetComponentLocation().X, Pt->GetComponentLocation().Y, Pt->GetComponentLocation().Z - 500.f);
+		const FVector RaisedLocation = FVector(Pt->GetComponentLocation().X, Pt->GetComponentLocation().Y, Pt->GetComponentLocation().Z + 200.f);
+		const FVector LoweredLocation = FVector(Pt->GetComponentLocation().X, Pt->GetComponentLocation().Y, Pt->GetComponentLocation().Z - 200.f);
 		
 		FHitResult HitResult;
 		TArray<AActor*> IgnoreActors;
