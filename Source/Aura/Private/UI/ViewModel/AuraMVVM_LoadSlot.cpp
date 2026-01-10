@@ -13,3 +13,8 @@ void UAuraMVVM_LoadSlot::SetPlayerName(FString InPlayerName)
 {
 	UE_MVVM_SET_PROPERTY_VALUE(PlayerName, InPlayerName);
 }
+
+void UAuraMVVM_LoadSlot::SetLoadSlotName(FString InLoadSlotName)
+{
+	UE_MVVM_SET_PROPERTY_VALUE(LoadSlotName, InLoadSlotName);
+}
