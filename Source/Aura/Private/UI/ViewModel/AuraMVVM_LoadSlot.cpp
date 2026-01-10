@@ -5,8 +5,8 @@
 
 void UAuraMVVM_LoadSlot::InitializeSlot()
 {
-	// TODO: Check slot status based on loaded data
-	SetWidgetSwitcherIndex.Broadcast(2);
+	const int32 WidgetSwitcherIndex = SlotStatus.GetIntValue();
+	SetWidgetSwitcherIndex.Broadcast(WidgetSwitcherIndex);
 }
 
 void UAuraMVVM_LoadSlot::SetPlayerName(FString InPlayerName)
