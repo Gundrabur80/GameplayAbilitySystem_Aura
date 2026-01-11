@@ -28,10 +28,10 @@ public:
 	TObjectPtr<UAbilityInfo> AbilityInfo;
 	
 	void SaveSlotData(UAuraMVVM_LoadSlot* LoadSlot, int32 SlotIndex);
-	
 	UAuraLoadScreenSaveGame* GetSaveSlotData(const FString& SlotName, int32 SlotIndex) const;
-	
 	static void DeleteSlot(const FString& SlotName, int32 SlotIndex);
+	
+	void TravelToMap(UAuraMVVM_LoadSlot* Slot);
 	
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<USaveGame> LoadScreenSaveGameClass;
