@@ -18,3 +18,8 @@ void UAuraMVVM_LoadSlot::SetLoadSlotName(FString InLoadSlotName)
 {
 	UE_MVVM_SET_PROPERTY_VALUE(LoadSlotName, InLoadSlotName);
 }
+
+void UAuraMVVM_LoadSlot::SetMapName(FString InPlayerName)
+{
+	UE_MVVM_SET_PROPERTY_VALUE(MapName, InPlayerName);
+}
