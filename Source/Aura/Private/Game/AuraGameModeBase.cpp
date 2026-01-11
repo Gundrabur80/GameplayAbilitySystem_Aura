@@ -35,3 +35,11 @@ UAuraLoadScreenSaveGame* AAuraGameModeBase::GetSaveSlotData(const FString& SlotN
 	UAuraLoadScreenSaveGame* LoadScreenSaveGame = Cast<UAuraLoadScreenSaveGame>(SaveGameObject);
 	return LoadScreenSaveGame;
 }
+
+void AAuraGameModeBase::DeleteSlot(const FString& SlotName, int32 SlotIndex)
+{
+	if (UGameplayStatics::DoesSaveGameExist(SlotName, SlotIndex))
+	{
+		UGameplayStatics::DeleteGameInSlot(SlotName, SlotIndex);
+	}
+}
