@@ -30,6 +30,8 @@ public:
 	void SaveSlotData(UAuraMVVM_LoadSlot* LoadSlot, int32 SlotIndex);
 	UAuraLoadScreenSaveGame* GetSaveSlotData(const FString& SlotName, int32 SlotIndex) const;
 	static void DeleteSlot(const FString& SlotName, int32 SlotIndex);
+	UAuraLoadScreenSaveGame* RetrieveInGameSaveData() const;
+	void SaveIngameProgressData(UAuraLoadScreenSaveGame* SaveObject);
 	
 	void TravelToMap(UAuraMVVM_LoadSlot* Slot);
 	
