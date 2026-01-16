@@ -23,3 +23,8 @@ void UAuraMVVM_LoadSlot::SetMapName(FString InPlayerName)
 {
 	UE_MVVM_SET_PROPERTY_VALUE(MapName, InPlayerName);
 }
+
+void UAuraMVVM_LoadSlot::SetPlayerLevel(int32 InPlayerLevel)
+{
+	UE_MVVM_SET_PROPERTY_VALUE(PlayerLevel, InPlayerLevel);
+}
