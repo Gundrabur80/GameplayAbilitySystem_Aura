@@ -33,7 +33,8 @@ public:
 	UAuraLoadScreenSaveGame* RetrieveInGameSaveData() const;
 	void SaveIngameProgressData(UAuraLoadScreenSaveGame* SaveObject);
 	
-	void SaveWorldState(UWorld* World);
+	void SaveWorldState(UWorld* World) const;
+	void LoadWorldState(UWorld* World) const;
 	
 	void TravelToMap(UAuraMVVM_LoadSlot* Slot);
 	
