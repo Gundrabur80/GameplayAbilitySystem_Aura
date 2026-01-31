@@ -53,6 +53,11 @@ void AAuraPlayerController::HideMagicCircle()
 	}
 }
 
+void AAuraPlayerController::SetAutorunEnabled(bool bEnable)
+{
+	bAutoRunning = bEnable;
+}
+
 void AAuraPlayerController::ShowDamageNumber_Implementation(float DamageAmount, ACharacter* TargetCharacter, bool bBlockedHit, bool bCriticalHit)
 {
 	if (IsValid(TargetCharacter) && DamageTextComponentClass && IsLocalController())
